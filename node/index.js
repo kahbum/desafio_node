@@ -1,6 +1,6 @@
 const express = require("express");
 const mysql = require("mysql");
-const faker = require("@faker-js/faker");
+const { faker } = require("@faker-js/faker");
 const app = express();
 const port = 3000;
 
@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
 
   connection.query(`SELECT name from Person`, function (err, results, fields) {
     results.forEach((result) => {
-      response += `<br>${result.Name}`;
+      response += `<br>${result.name}`;
     });
 
     res.send(response);
