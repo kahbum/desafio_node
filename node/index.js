@@ -14,12 +14,12 @@ const config = {
 app.get("/", (req, res) => {
   const connection = mysql.createConnection(config);
   const randomName = faker.person.fullName();
-  const sql = `INSERT INTO Person(name) values ('${randomName}')`;
+  const sql = `INSERT INTO People(name) values ('${randomName}')`;
   connection.query(sql);
 
   let response = "<h1>Full Cycle Rocks!</h1>";
 
-  connection.query(`SELECT name from Person`, function (err, results, fields) {
+  connection.query(`SELECT name from People`, function (err, results, fields) {
     results.forEach((result) => {
       response += `<br>${result.name}`;
     });
